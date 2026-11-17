@@ -340,6 +340,12 @@ h1 {
   color: var(--muted-on-dark);
 }
 
+.honesty a,
+.steps a {
+  color: var(--breath-strong);
+  text-underline-offset: 0.16em;
+}
+
 .breath-figure {
   margin: 0;
   padding: 0.75rem 0.75rem 0.95rem;

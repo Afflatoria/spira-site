@@ -2,7 +2,7 @@
 
 SPIRA is a community project. Volunteers pool spare compute from their own PCs to train one capable, fully open language model together, then help serve it.
 
-This repository is the public landing page. The project is at the idea stage: there is no client to install. The page is how we learn who wants to take part.
+This repository is the public landing page. The project is at the idea stage: there is no client to install. The page gauges interest. The client, the code, the training data pipeline, and the model weights are planned to be fully open source, developed in the open at [Afflatoria](https://github.com/Afflatoria).
 
 The live URL is intended to be [https://afflatoria.github.io/spira-site/](https://afflatoria.github.io/spira-site/). The organization is [Afflatoria](https://github.com/Afflatoria).
 
@@ -36,16 +36,13 @@ Until `SPIRA_FORM_ENDPOINT` is a non-empty string, the page does not try to send
 
 | Name | What it is |
 | --- | --- |
-| `path` | Hidden. `donate-compute` or `help-build`. |
 | `source` | Hidden. The `ref` query parameter, or `utm_source` if `ref` is absent. Empty if neither is present. |
-| `email` | Required on both paths. |
-| `name` | Help-build path. |
-| `hardware` | Donate-compute path. Optional GPU or other hardware description. |
-| `country` | Donate-compute path. Optional. |
-| `skills` | Help-build path. Comma-separated. One or more of: ML research, Distributed systems, Frontend, Community / ops, Design. |
-| `note` | Help-build path. Optional. |
-| `updates` | `yes` if the visitor opted in, otherwise `no`. |
-| `_subject` | Added on the JSON path so the Formspree email subject says which path it was. |
+| `email` | Required. |
+| `name` | Optional. |
+| `run_client` | `yes` or `no`. “I'd consider running the SPIRA client on my computer when it exists.” |
+| `help_build` | `yes` or `no`. “I'd like to help build SPIRA (code, research, design, community).” |
+| `note` | Optional. “Anything you'd like to tell us.” |
+| `_subject` | Added on the JSON request so the Formspree email subject reads `SPIRA: interest`. |
 
 Example links for outreach:
 
@@ -71,7 +68,7 @@ Do not send test submissions to the live endpoint unless you need a single smoke
 
 Google Forms does not accept the JSON body this page sends to Formspree. Use the form-encoded option.
 
-1. Create a Google Form with a short-answer question for each field you want to keep: `path`, `source`, `email`, `name`, `hardware`, `country`, `skills`, `note`, and `updates`. Hidden values still have to be questions on the form, or Google drops them.
+1. Create a Google Form with a question for each field you want to keep: `source`, `email`, `name`, `run_client`, `help_build`, and `note`. Use short answers for the text fields. For the two yes/no fields, a short answer that will receive `yes` or `no` is the simplest match. Hidden values still have to be questions on the form, or Google drops them.
 2. Open the form, use the menu, and choose **Get pre-filled link**. Type a sample answer for every question, then copy the link.
 3. Each answer in that link is an `entry.#########=` pair. Those numbers are the field IDs.
 4. Find the submission URL. While viewing the live form, open the page source and copy the `action` of the `<form>`. It looks like `https://docs.google.com/forms/d/e/FORM_ID/formResponse`.
@@ -81,15 +78,12 @@ Google Forms does not accept the JSON body this page sends to Formspree. Use the
 window.SPIRA_FORM_ENDPOINT = "https://docs.google.com/forms/d/e/FORM_ID/formResponse";
 window.SPIRA_FORM_FORMAT = "form";
 window.SPIRA_FORM_FIELDS = {
-  path: "entry.0000000001",
-  source: "entry.0000000002",
-  email: "entry.0000000003",
-  name: "entry.0000000004",
-  hardware: "entry.0000000005",
-  country: "entry.0000000006",
-  skills: "entry.0000000007",
-  note: "entry.0000000008",
-  updates: "entry.0000000009"
+  source: "entry.0000000001",
+  email: "entry.0000000002",
+  name: "entry.0000000003",
+  run_client: "entry.0000000004",
+  help_build: "entry.0000000005",
+  note: "entry.0000000006"
 };
 ```
 
