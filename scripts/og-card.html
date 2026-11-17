@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SPIRA Open Graph card</title>
+  <style>
+    @font-face {
+      font-family: "Fraunces";
+      font-style: normal;
+      font-weight: 600;
+      src: url("../assets/fonts/fraunces-latin-600.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Source Sans 3";
+      font-style: normal;
+      font-weight: 400;
+      src: url("../assets/fonts/source-sans-3-latin-400.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Source Sans 3";
+      font-style: normal;
+      font-weight: 600;
+      src: url("../assets/fonts/source-sans-3-latin-600.woff2") format("woff2");
+    }
+    html, body {
+      margin: 0;
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #101410;
+      color: #e7f1eb;
+      font-family: "Source Sans 3", sans-serif;
+    }
+    .card {
+      box-sizing: border-box;
+      width: 1200px;
+      height: 630px;
+      padding: 72px 76px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 24px;
+      background:
+        radial-gradient(520px 420px at 88% 48%, rgba(143, 191, 164, 0.18), transparent 62%),
+        #101410;
+    }
+    .eyebrow {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #f0c2b0;
+    }
+    h1 {
+      margin: 18px 0 0;
+      font-family: Fraunces, serif;
+      font-weight: 600;
+      font-size: 108px;
+      line-height: 0.86;
+      letter-spacing: -0.04em;
+    }
+    .rest {
+      display: block;
+      margin-top: 22px;
+      max-width: 16ch;
+      font-size: 36px;
+      line-height: 1.15;
+      color: #e4f3ea;
+    }
+    .pitch {
+      margin: 28px 0 0;
+      max-width: 34rem;
+      font-size: 28px;
+      line-height: 1.35;
+      color: #d5e4db;
+    }
+    .url {
+      margin: 36px 0 0;
+      font-size: 22px;
+      font-weight: 600;
+      color: #8fbfa4;
+    }
+    .mark {
+      align-self: center;
+      justify-self: center;
+      width: 280px;
+      height: 280px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div>
+      <p class="eyebrow">Afflatoria · Idea stage</p>
+      <h1>SPIRA:<span class="rest">Shared Pooled Intelligence for Research and AI</span></h1>
+      <p class="pitch">Volunteers pool spare compute from their own PCs to train one capable, fully open language model together, then help serve it.</p>
+      <p class="url">afflatoria.github.io/spira-site</p>
+    </div>
+    <svg class="mark" viewBox="0 0 280 280" aria-hidden="true">
+      <circle cx="140" cy="140" r="16" fill="#e7f3ec"></circle>
+      <circle cx="140" cy="140" r="58" fill="none" stroke="#8fbfa4" stroke-width="6"></circle>
+      <circle cx="140" cy="140" r="96" fill="none" stroke="#8fbfa4" stroke-width="4" opacity="0.75"></circle>
+      <circle cx="140" cy="140" r="128" fill="none" stroke="#d5e6db" stroke-width="3" opacity="0.45"></circle>
+    </svg>
+  </div>
+</body>
+</html>
