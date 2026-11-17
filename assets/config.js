@@ -12,9 +12,12 @@
  * short note instead of failing silently.
  *
  * Fields:
- *   path      "donate-compute" or "help-build"          (hidden)
- *   source    ?ref= if present, otherwise ?utm_source=  (hidden)
- *   email, name, hardware, country, skills, note, updates
+ *   source      ?ref= if present, otherwise ?utm_source=  (hidden)
+ *   email       required
+ *   name        optional
+ *   run_client  "yes" or "no"  (would consider running the client later)
+ *   help_build  "yes" or "no"  (would like to help build SPIRA)
+ *   note        optional free text
  *
  * Google Forms: set SPIRA_FORM_FORMAT to "form" and SPIRA_FORM_FIELDS
  * to a map of those names onto entry IDs. See the README.
@@ -28,15 +31,12 @@ window.SPIRA_FORM_FORMAT = "json";
  * Optional rename map. Leave null for Formspree.
  *
  * window.SPIRA_FORM_FIELDS = {
- *   path: "entry.0000000001",
- *   source: "entry.0000000002",
- *   email: "entry.0000000003",
- *   name: "entry.0000000004",
- *   hardware: "entry.0000000005",
- *   country: "entry.0000000006",
- *   skills: "entry.0000000007",
- *   note: "entry.0000000008",
- *   updates: "entry.0000000009"
+ *   source: "entry.0000000001",
+ *   email: "entry.0000000002",
+ *   name: "entry.0000000003",
+ *   run_client: "entry.0000000004",
+ *   help_build: "entry.0000000005",
+ *   note: "entry.0000000006"
  * };
  */
 window.SPIRA_FORM_FIELDS = null;

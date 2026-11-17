@@ -3,7 +3,6 @@
   var toggle = document.querySelector(".menu-toggle");
   var nav = document.querySelector("#site-nav");
   var form = document.querySelector("#signup");
-  var pathInput = document.querySelector("#field-path");
   var sourceInput = document.querySelector("#field-source");
   var statusEl = document.querySelector("#form-status");
   var submitBtn = document.querySelector("#submit-btn");
@@ -67,7 +66,7 @@
   }
 
   function clearErrors() {
-    ["email", "name", "hardware", "country", "note", "skills"].forEach(clearFieldError);
+    ["email", "name", "note"].forEach(clearFieldError);
   }
 
   function showStatus(kind, message) {
@@ -85,36 +84,10 @@
     statusEl.textContent = "";
   }
 
-  function selectPath(path, options) {
-    options = options || {};
-    if (path !== "donate-compute" && path !== "help-build") return;
-    if (pathInput) pathInput.value = path;
-    document.querySelectorAll("[data-panel]").forEach(function (panel) {
-      var on = panel.getAttribute("data-panel") === path;
-      panel.hidden = !on;
-      panel.querySelectorAll("input, textarea, select").forEach(function (el) {
-        el.disabled = !on;
-      });
-    });
-    document.querySelectorAll(".path-switch [data-choose]").forEach(function (btn) {
-      btn.setAttribute("aria-pressed", btn.getAttribute("data-choose") === path ? "true" : "false");
-    });
-    var name = document.getElementById("name");
-    if (name) name.setAttribute("aria-required", path === "help-build" ? "true" : "false");
-    if (submitBtn && !submitBtn.disabled) {
-      submitBtn.textContent = path === "help-build" ? "Offer to help build" : "Register interest";
-    }
-    if (!options.keepStatus) clearStatus();
-    clearErrors();
+  function checkedValue(id) {
+    var el = document.getElementById(id);
+    return el && el.checked ? "yes" : "no";
   }
-
-  document.addEventListener("click", function (event) {
-    var trigger = event.target.closest("[data-choose]");
-    if (!trigger) return;
-    selectPath(trigger.getAttribute("data-choose"));
-  });
-
-  selectPath("donate-compute");
 
   function fieldValue(id) {
     var el = document.getElementById(id);
@@ -175,54 +148,32 @@
 
       var honeypot = form.querySelector('input[name="_gotcha"]');
       if (honeypot && honeypot.value) {
-        showStatus("success", "Thank you. We have your note.");
+        showStatus("success", "Thank you. We have your note. Nothing will be installed on your computer.");
         form.reset();
         if (sourceInput) sourceInput.value = readSource();
-        selectPath(pathInput ? pathInput.value : "donate-compute", { keepStatus: true });
         return;
       }
 
-      var path = pathInput ? pathInput.value : "donate-compute";
       var email = fieldValue("email");
+      var name = fieldValue("name");
+      var note = fieldValue("note");
       var ok = true;
 
       if (!validEmail(email)) {
         setFieldError("email", "Enter a real email address.");
         ok = false;
       }
-      if (path === "help-build") {
-        if (!fieldValue("name") || fieldValue("name").length > 120) {
-          setFieldError("name", "Add your name.");
-          ok = false;
-        }
-        var checked = form.querySelectorAll('input[name="skill"]:checked');
-        if (!checked.length) {
-          setFieldError("skills", "Choose at least one skill.");
-          ok = false;
-        }
+      if (name.length > 120) {
+        setFieldError("name", "Keep your name under 120 characters.");
+        ok = false;
       }
-      if (path === "donate-compute") {
-        if (fieldValue("hardware").length > 500) {
-          setFieldError("hardware", "Keep the hardware note under 500 characters.");
-          ok = false;
-        }
-        if (fieldValue("country").length > 80) {
-          setFieldError("country", "Keep the country under 80 characters.");
-          ok = false;
-        }
-      }
-      if (path === "help-build" && fieldValue("note").length > 2000) {
+      if (note.length > 2000) {
         setFieldError("note", "Keep the note under 2000 characters.");
         ok = false;
       }
       if (!ok) {
         var firstInvalid = form.querySelector("[aria-invalid='true']");
-        if (firstInvalid && firstInvalid.id === "skills") {
-          var firstSkill = form.querySelector('input[name="skill"]:not(:disabled)');
-          if (firstSkill) firstSkill.focus();
-        } else if (firstInvalid && firstInvalid.focus) {
-          firstInvalid.focus();
-        }
+        if (firstInvalid && firstInvalid.focus) firstInvalid.focus();
         return;
       }
 
@@ -235,23 +186,14 @@
         return;
       }
 
-      var skills = Array.prototype.map
-        .call(form.querySelectorAll('input[name="skill"]:checked'), function (el) {
-          return el.value;
-        })
-        .join(", ");
       var source = sourceInput ? sourceInput.value : "";
-      var updates = form.querySelector('input[name="updates"]');
       var payload = {
-        path: path,
         source: source,
         email: email,
-        name: path === "help-build" ? fieldValue("name") : "",
-        hardware: path === "donate-compute" ? fieldValue("hardware") : "",
-        country: path === "donate-compute" ? fieldValue("country") : "",
-        skills: path === "help-build" ? skills : "",
-        note: path === "help-build" ? fieldValue("note") : "",
-        updates: updates && updates.checked ? "yes" : "no"
+        name: name,
+        run_client: checkedValue("run-client"),
+        help_build: checkedValue("help-build"),
+        note: note
       };
 
       if (submitBtn) {
@@ -275,18 +217,14 @@ await fetch(url, {
           });
           showStatus(
             "success",
-            path === "help-build"
-              ? "Thank you. You are on the list as someone who wants to help build SPIRA. Nothing will be installed on your PC."
-              : "Thank you. You are on the list as someone who may donate compute. There is no client yet, so nothing runs on your PC."
+            "Thank you. You are on the list. Nothing will be installed on your computer."
           );
           form.reset();
           if (sourceInput) sourceInput.value = readSource();
-          selectPath(path, { keepStatus: true });
           return;
         }
 
-        var subject =
-          path === "help-build" ? "SPIRA: help build" : "SPIRA: donate compute";
+        var subject = "SPIRA: interest";
         var jsonPayload = Object.assign({}, payload, {
           _subject: source ? subject + " (" + source + ")" : subject
         });
@@ -312,13 +250,10 @@ await fetch(url, {
         }
         showStatus(
           "success",
-          path === "help-build"
-            ? "Thank you. You are on the list as someone who wants to help build SPIRA. Nothing will be installed on your PC."
-            : "Thank you. You are on the list as someone who may donate compute. There is no client yet, so nothing runs on your PC."
+          "Thank you. You are on the list. Nothing will be installed on your computer."
         );
         form.reset();
         if (sourceInput) sourceInput.value = readSource();
-        selectPath(path, { keepStatus: true });
       } catch (err) {
         showStatus(
           "error",
@@ -327,10 +262,7 @@ await fetch(url, {
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.textContent =
-            pathInput && pathInput.value === "help-build"
-              ? "Offer to help build"
-              : "Register interest";
+          submitBtn.textContent = "Count me in";
         }
       }
     });
