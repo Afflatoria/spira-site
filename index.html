@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPIRA: Shared Pooled Intelligence for Research and AI</title>
+  <meta name="description" content="Volunteers pool spare compute from their own PCs to train one capable, fully open language model together, then help serve it. Idea stage. Community-run.">
+  <link rel="canonical" href="https://afflatoria.github.io/spira-site/">
+  <meta name="theme-color" content="#101410">
+  <meta name="robots" content="index, follow">
+  <meta property="og:site_name" content="SPIRA">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="SPIRA: Shared Pooled Intelligence for Research and AI">
+  <meta property="og:description" content="Volunteers pool spare compute from their own PCs to train one capable, fully open language model together, then help serve it.">
+  <meta property="og:url" content="https://afflatoria.github.io/spira-site/">
+  <meta property="og:image" content="https://afflatoria.github.io/spira-site/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SPIRA: Shared Pooled Intelligence for Research and AI. Volunteers pool spare compute to train one open language model.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SPIRA: Shared Pooled Intelligence for Research and AI">
+  <meta name="twitter:description" content="Volunteers pool spare compute from their own PCs to train one capable, fully open language model together, then help serve it.">
+  <meta name="twitter:image" content="https://afflatoria.github.io/spira-site/assets/og.png">
+  <meta name="twitter:image:alt" content="SPIRA: Shared Pooled Intelligence for Research and AI. Volunteers pool spare compute to train one open language model.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/fraunces-latin-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SPIRA: Shared Pooled Intelligence for Research and AI",
+    "url": "https://afflatoria.github.io/spira-site/",
+    "description": "Volunteers pool spare compute from their own PCs to train one capable, fully open language model together, then help serve it.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Afflatoria",
+      "url": "https://github.com/Afflatoria"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+  <header class="site-header">
+    <div class="bar wrap">
+      <a class="brand" href="#top">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="2.3" fill="currentColor"></circle>
+          <path d="M16 8.2a7.8 7.8 0 0 1 7.8 7.8" fill="none" stroke="currentColor" stroke-width="1.6"></path>
+          <path d="M16 4.2a11.8 11.8 0 0 1 11.8 11.8" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.65"></path>
+        </svg>
+        <span>SPIRA</span>
+      </a>
+      <nav id="site-nav" class="nav-panel" aria-label="Primary">
+        <a href="#origin">The idea</a>
+        <a href="#how">How it works</a>
+        <a href="#why">Why</a>
+        <a href="#differs">Related work</a>
+        <a href="#challenges">Challenges</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-github" href="https://github.com/Afflatoria" rel="noopener noreferrer">GitHub</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-github" href="https://github.com/Afflatoria" rel="noopener noreferrer">GitHub</a>
+        <a class="btn btn-small header-cta" href="#join">Get involved</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="pill">Idea stage</span> An Afflatoria project</p>
+          <h1>
+            <span class="h1-lead">SPIRA:</span>
+            <span class="h1-rest">Shared Pooled Intelligence for Research and AI</span>
+          </h1>
+          <p class="pitch">Volunteers pool spare compute from their own PCs to train one capable, fully open language model together, then help serve it.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#join" data-choose="donate-compute">Donate compute</a>
+            <a class="btn btn-ghost" href="#join" data-choose="help-build">Help build it</a>
+          </div>
+          <p class="honesty">There is nothing to install. Signing up says you want this to exist. It does not run anything on your PC.</p>
+        </div>
+        <figure class="breath-figure">
+          <canvas id="breath" aria-hidden="true"></canvas>
+          <figcaption>Separate breaths, one rhythm. A drawing, not a live network.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section-paper" id="origin">
+      <div class="wrap narrow">
+        <p class="kicker">Background</p>
+        <h2>Where the idea came from</h2>
+        <p>The founder was inspired by <a href="https://boinc.berkeley.edu" rel="noopener noreferrer">BOINC</a>, the Berkeley Open Infrastructure for Network Computing, a project at the University of California, Berkeley, since 2002.</p>
+        <p>If you have never heard of it: volunteers install a small app that uses their computer's idle time to work on real science. Einstein@Home searches for pulsars. Rosetta@home models proteins. Originally, SETI@home searched radio data. A server splits the work into chunks, sends them out, checks the results, and combines them.</p>
+        <blockquote class="ask">
+          <p>SPIRA asks whether that same idea can train and serve an open language model.</p>
+        </blockquote>
+        <p><span class="name-inline">SPIRA: Shared Pooled Intelligence for Research and AI</span> is that question, as its own project. Volunteers would pool spare compute from their own PCs to train one capable, fully open language model together, then help serve it. There is no client yet. SPIRA is not part of BOINC, and it is not run by UC Berkeley.</p>
+      </div>
+    </section>
+
+    <section class="section section-night" id="how">
+      <div class="wrap">
+        <p class="kicker">The plan</p>
+        <h2>How it works</h2>
+        <p class="lede">Four stages, in order. Today there is an invitation, and no software.</p>
+        <ol class="steps">
+          <li>
+            <span class="step-num">01</span>
+            <h3>Donate compute</h3>
+            <p>You offer spare time on a PC you already own. When a client exists, you choose when it may run, and you can stop it. A GPU can help. Signing up now does not install anything or use your machine.</p>
+          </li>
+          <li>
+            <span class="step-num">02</span>
+            <h3>Shared training</h3>
+            <p>Participating machines work on one model. Their progress is combined into a single set of weights. The work is shared. The result is not split into private copies.</p>
+          </li>
+          <li>
+            <span class="step-num">03</span>
+            <h3>An open model</h3>
+            <p>The aim is a fully open release: weights, training approach, and code published so anyone can study them, run them, and build on them. Not an API a company can close.</p>
+          </li>
+          <li>
+            <span class="step-num">04</span>
+            <h3>Community inference</h3>
+            <p>After a model exists, the same volunteer network helps serve it. Requests would be answered by computers people have chosen to share, rather than by a service you do not control.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-paper" id="why">
+      <div class="wrap">
+        <p class="kicker">The point</p>
+        <h2>Why it matters</h2>
+        <p class="lede">A capable language model is becoming shared infrastructure. The capable ones are mostly trained and held by a few companies. They can change the terms, hide the weights, or switch the service off.</p>
+        <p>SPIRA is a community project under the <a href="https://github.com/Afflatoria" rel="noopener noreferrer">Afflatoria</a> GitHub organization. It is an attempt to train one capable, fully open language model on spare compute that volunteers pool from their own PCs, and then to help serve it the same way. No company owns it. There is no token, and no plan to lock the model behind a paid API.</p>
+        <dl class="principles">
+          <div>
+            <dt>Open</dt>
+            <dd>Fully open means people outside the project can hold a copy of the weights and read the method. A demo behind a login is not the goal.</dd>
+          </div>
+          <div>
+            <dt>Not a company</dt>
+            <dd>Afflatoria is a community GitHub organization. There is no equity in the model and no owner who can take it private later.</dd>
+          </div>
+          <div>
+            <dt>Democratic, in a plain sense</dt>
+            <dd>The project is community-run. People who show up to build it do that in the open, rather than inside a company that can decide alone. That is not a claim that a vote of the internet will steer every training choice. It is a refusal to leave the model in a few hands.</dd>
+          </div>
+          <div>
+            <dt>One shared model</dt>
+            <dd>The point is a commons: one model the public can keep. Not a market of private models, and not a payout for spare cycles.</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section section-night" id="differs">
+      <div class="wrap">
+        <p class="kicker">Related work</p>
+        <h2>How this differs</h2>
+        <p class="lede">Other groups have already done parts of this, and they have shipped real work. SPIRA has not. The difference is the arrangement, not a claim of better results.</p>
+        <div class="differs">
+          <article class="differ">
+            <h3>Prime Intellect</h3>
+            <p>Prime Intellect has trained models across computers on the public internet, and it has published work on low-communication training. It is a company with a platform. People contribute through that platform.</p>
+            <p>SPIRA has no company and no platform. The hope is spare capacity on PCs volunteers already own, given freely. Nothing here is running yet.</p>
+          </article>
+          <article class="differ">
+            <h3>Nous Research, Psyche</h3>
+            <p>Nous Research has run Psyche, a decentralized pretraining effort, and has published training methods that need very little bandwidth. That work comes from a research company, with its own roadmap and its own runs.</p>
+            <p>SPIRA is a volunteer community project. It does not have a training run, a client, or a lab behind it.</p>
+          </article>
+          <article class="differ">
+            <h3>Petals</h3>
+            <p>Petals lets people pool GPU memory to run and fine-tune large models that already exist. It is research software, and someone can join it today. Its main job is inference and fine-tuning.</p>
+            <p>SPIRA's first aim is to train one new open model as a community, and to help serve it after that. Petals is further along. We are naming a different aim, not competing with their result.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-paper" id="challenges">
+      <div class="wrap narrow">
+        <p class="kicker">What is hard</p>
+        <h2>Honest technical challenges</h2>
+        <p class="lede">Training one language model on home PCs is an open research problem. Nothing below is built. These are the difficulties we already know are real, and the approaches worth trying.</p>
+
+        <article class="challenge">
+          <h3>Home connections are too slow</h3>
+          <p>A normal training step wants to move a huge amount of data between machines. A home upload link cannot do that. Searches that split into independent chunks do not have this problem. Training one model does.</p>
+          <p class="approach"><span class="label-mini">Approach</span> Low-bandwidth methods in the family of DiLoCo: each machine takes many steps locally, then sends a small update, not every gradient.</p>
+          <p class="still"><span class="label-mini">Still open</span> Whether those rare updates stay stable for a model large enough to be useful, on links that are slow and uneven.</p>
+        </article>
+
+        <article class="challenge">
+          <h3>Machines leave</h3>
+          <p>A home PC will sleep, reboot, or be turned off. Dropout has to be normal, not a crash.</p>
+          <p class="approach"><span class="label-mini">Approach</span> Fault tolerance. Checkpoint often, let another machine finish abandoned work, and keep the run going when nodes drop out.</p>
+          <p class="still"><span class="label-mini">Still open</span> Doing that without wasting most of the donated time.</p>
+        </article>
+
+        <article class="challenge">
+          <h3>The work has to be checked</h3>
+          <p>A machine can be wrong by accident, or someone can send an update meant to spoil the model. Volunteers are not a trusted cluster.</p>
+          <p class="approach"><span class="label-mini">Approach</span> Verification. Repeat some of the work, reject updates that do not fit, and keep a smaller set of machines that can audit others.</p>
+          <p class="still"><span class="label-mini">Still open</span> A check that is strong enough against a determined attacker and still cheap enough for spare hardware. This is not solved. A volunteer project should say so before it asks for trust.</p>
+        </article>
+
+        <article class="challenge">
+          <h3>The PCs do not match, and the data has to be legitimate</h3>
+          <p>A model people would call capable does not fit on one consumer GPU. The honest start is a small public test. Splitting a larger model across ordinary PCs is research, not a feature we can promise.</p>
+          <p class="still"><span class="label-mini">Still open</span> The training text also has to be lawfully usable, with a public recipe. That choice has not been made, and it will be made in the open.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-night" id="roadmap">
+      <div class="wrap narrow">
+        <p class="kicker">Order of work</p>
+        <div class="title-row">
+          <h2>Roadmap</h2>
+          <span class="badge">Tentative</span>
+        </div>
+        <p class="lede">An order of work, not a schedule. Putting dates on this would be fiction.</p>
+        <ol class="timeline">
+          <li class="now">
+            <p class="when">Now</p>
+            <h3>Interest</h3>
+            <p>This page. Find people willing to offer a PC later, or to help design the system now.</p>
+          </li>
+          <li>
+            <h3>A public design</h3>
+            <p>Protocol, hardware assumptions, threat model, and data principles, written where anyone can argue with them.</p>
+          </li>
+          <li>
+            <h3>A first client</h3>
+            <p>A small open-source program that can join a toy run and leave without surprise. If you cannot read it, you should not run it.</p>
+          </li>
+          <li>
+            <h3>A small proof</h3>
+            <p>Train a modest model across a few home machines. Publish the weights and an honest account of what broke.</p>
+          </li>
+          <li>
+            <h3>A capable model</h3>
+            <p>Only if the proof holds. Size, data, and verification have to be earned one at a time.</p>
+          </li>
+          <li>
+            <h3>Shared inference</h3>
+            <p>Use the volunteer network to help serve the model, so using it does not require a company API.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-paper" id="faq">
+      <div class="wrap narrow">
+        <p class="kicker">Questions</p>
+        <h2>FAQ</h2>
+        <div class="faq">
+          <details open>
+            <summary>What is SPIRA?</summary>
+            <p>SPIRA: Shared Pooled Intelligence for Research and AI. Volunteers pool spare compute from their own PCs to train one capable, fully open language model together, then help serve it. It is community-run, at the idea stage, and there is no client yet.</p>
+          </details>
+          <details>
+            <summary>Can I install something today?</summary>
+            <p>No. There is no client. The form is a way to say you want to take part when there is something real to run, or that you want to help build it.</p>
+          </details>
+          <details>
+            <summary>Is this cryptocurrency?</summary>
+            <p>No. There is no token, no wallet, and no payout. Spare compute would be a donation.</p>
+          </details>
+          <details>
+            <summary>Who controls the project?</summary>
+            <p>It is community-run, hosted by the <a href="https://github.com/Afflatoria" rel="noopener noreferrer">Afflatoria</a> GitHub organization. It is not a company. Design, data, and the license should be argued in the open by the people doing the work.</p>
+          </details>
+          <details>
+            <summary>Who owns the model?</summary>
+            <p>No model exists. The intention is a fully open release the public can keep, not a weight file locked to one organization. The exact license is not chosen yet.</p>
+          </details>
+          <details>
+            <summary>Will it slow down my PC?</summary>
+            <p>Nothing runs on your PC today. The aim, once a client exists, is spare capacity only, under your control. That still has to be built and tested.</p>
+          </details>
+          <details>
+            <summary>What hardware do I need?</summary>
+            <p>You do not need a specific machine to register interest. A GPU is useful. An older PC may still matter for early tests. Real minimums will be published before anyone is asked to run code.</p>
+          </details>
+          <details>
+            <summary>Where did the idea come from?</summary>
+            <p>The founder was inspired by <a href="https://boinc.berkeley.edu" rel="noopener noreferrer">BOINC</a>, the Berkeley Open Infrastructure for Network Computing, at UC Berkeley since 2002. Volunteers install a small app that uses idle time for scientific work, and a server splits that work into chunks, checks the results, and combines them. SPIRA asks whether that same idea can train and serve an open language model. The longer note is in <a href="#origin">Where the idea came from</a>.</p>
+          </details>
+          <details>
+            <summary>Why the name?</summary>
+            <p>From Latin <em>spiritus</em> and <em>spirare</em>: breath, or spirit. One mind, made from many breaths.</p>
+          </details>
+          <details>
+            <summary>What happens to my email?</summary>
+            <p>The form sends it to a Formspree inbox for this project, so we can reply. If you opt in, we may write when there is something to report. This page loads no advertising trackers, and we do not sell the list.</p>
+          </details>
+          <details>
+            <summary>When does training start?</summary>
+            <p>No date. A public design and a small proof come first. The roadmap is tentative.</p>
+          </details>
+          <details>
+            <summary>How do I help if I do not have a powerful PC?</summary>
+            <p>Choose Help build it. Machine learning, distributed systems, the website, design, and community organizing all matter before a training run does.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-night" id="join">
+      <div class="wrap narrow">
+        <p class="kicker">Take part</p>
+        <h2>Get involved</h2>
+        <p class="lede">Two ways to raise a hand. Neither one installs software, and neither one obligates you. We are asking who wants to take part while the project is still an idea.</p>
+        <div class="join-card">
+          <h3>Tell us how you want to help</h3>
+          <p>You can do both, one after the other. The project also lives on <a href="https://github.com/Afflatoria" rel="noopener noreferrer">GitHub</a>.</p>
+          <noscript>
+            <p class="form-status is-note">The signup form needs JavaScript to send. You can still reach the project on GitHub.</p>
+          </noscript>
+          <!-- Posts to the endpoint in assets/config.js -->
+          <form id="signup" method="post" action="#join" novalidate>
+            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+            <input type="hidden" name="path" id="field-path" value="donate-compute">
+            <input type="hidden" name="source" id="field-source" value="">
+            <div class="hp" aria-hidden="true">
+              <label for="gotcha">Leave this empty</label>
+              <input id="gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="path-switch" role="group" aria-label="How you want to take part">
+              <button type="button" data-choose="donate-compute" aria-pressed="true">Donate compute</button>
+              <button type="button" data-choose="help-build" aria-pressed="false">Help build it</button>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="200" required aria-required="true" aria-describedby="email-error">
+              <p class="field-error" id="email-error" hidden></p>
+            </div>
+
+            <div data-panel="donate-compute">
+              <div class="field">
+                <label for="hardware">GPU or other hardware <span class="hint">(optional)</span></label>
+                <textarea id="hardware" name="hardware" rows="2" maxlength="500" placeholder="Example: a desktop with an RTX 4070, or a laptop with no separate GPU" aria-describedby="hardware-error"></textarea>
+                <p class="field-error" id="hardware-error" hidden></p>
+              </div>
+              <div class="field">
+                <label for="country">Country <span class="hint">(optional)</span></label>
+                <input id="country" name="country" type="text" autocomplete="country-name" maxlength="80" aria-describedby="country-error">
+                <p class="field-error" id="country-error" hidden></p>
+              </div>
+            </div>
+
+            <div data-panel="help-build" hidden>
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" maxlength="120" aria-describedby="name-error">
+                <p class="field-error" id="name-error" hidden></p>
+              </div>
+              <fieldset class="skills-field" id="skills">
+                <legend>Skills</legend>
+                <p class="hint" id="skills-hint">Choose any that apply.</p>
+                <div class="skills">
+                  <label class="skill"><input type="checkbox" name="skill" value="ML research"> ML research</label>
+                  <label class="skill"><input type="checkbox" name="skill" value="Distributed systems"> Distributed systems</label>
+                  <label class="skill"><input type="checkbox" name="skill" value="Frontend"> Frontend</label>
+                  <label class="skill"><input type="checkbox" name="skill" value="Community / ops"> Community / ops</label>
+                  <label class="skill"><input type="checkbox" name="skill" value="Design"> Design</label>
+                </div>
+                <p class="field-error" id="skills-error" hidden></p>
+              </fieldset>
+              <div class="field">
+                <label for="note">Note <span class="hint">(optional)</span></label>
+                <textarea id="note" name="note" rows="4" maxlength="2000" placeholder="What you would like to work on, if you know." aria-describedby="note-error"></textarea>
+                <p class="field-error" id="note-error" hidden></p>
+              </div>
+            </div>
+
+            <label class="check">
+              <input type="checkbox" name="updates" value="yes">
+              <span>Email me occasional updates about SPIRA. No messages from anyone else.</span>
+            </label>
+            <button class="btn btn-primary" id="submit-btn" type="submit">Register interest</button>
+            <p class="privacy">Your email goes to the project's Formspree form so we can reply. This page does not load analytics.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-name">SPIRA: Shared Pooled Intelligence for Research and AI</p>
+      <p>A community project of <a href="https://github.com/Afflatoria" rel="noopener noreferrer">Afflatoria</a>. Idea stage. No client yet.</p>
+      <p class="etymology">The name comes from Latin <em>spiritus</em> and <em>spirare</em>: breath, or spirit. One mind, made from many breaths.</p>
+    </div>
+  </footer>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>
