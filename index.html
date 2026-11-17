@@ -59,7 +59,6 @@
         <a href="#origin">The idea</a>
         <a href="#how">How it works</a>
         <a href="#why">Why</a>
-        <a href="#differs">Related work</a>
         <a href="#challenges">Challenges</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#faq">FAQ</a>
@@ -123,17 +122,17 @@
           <li>
             <span class="step-num">02</span>
             <h3>Shared training</h3>
-            <p>Participating machines work on one model. Their progress is combined into a single set of weights. The work is shared. The result is not split into private copies.</p>
+            <p>Participating machines work on one model. Their progress is combined into a single set of weights. The work is shared, and so is the result.</p>
           </li>
           <li>
             <span class="step-num">03</span>
             <h3>An open model</h3>
-            <p>The aim is a fully open release: weights, training approach, and code published so anyone can study them, run them, and build on them. Not an API a company can close.</p>
+            <p>The result is open to everyone: weights, training approach, and code published so anyone can study them, run them, and build on them.</p>
           </li>
           <li>
             <span class="step-num">04</span>
             <h3>Community inference</h3>
-            <p>After a model exists, the same volunteer network helps serve it. Requests would be answered by computers people have chosen to share, rather than by a service you do not control.</p>
+            <p>After a model exists, the same volunteer network helps serve it. The people who gave the compute also help answer requests.</p>
           </li>
         </ol>
       </div>
@@ -143,85 +142,57 @@
       <div class="wrap">
         <p class="kicker">The point</p>
         <h2>Why it matters</h2>
-        <p class="lede">A capable language model is becoming shared infrastructure. The capable ones are mostly trained and held by a few companies. They can change the terms, hide the weights, or switch the service off.</p>
-        <p>SPIRA is a community project under the <a href="https://github.com/Afflatoria" rel="noopener noreferrer">Afflatoria</a> GitHub organization. It is an attempt to train one capable, fully open language model on spare compute that volunteers pool from their own PCs, and then to help serve it the same way. No company owns it. There is no token, and no plan to lock the model behind a paid API.</p>
+        <p class="lede">People already give idle time on their own computers to a shared goal they believe in. SPIRA asks them to do that for one language model.</p>
+        <p><span class="name-inline">SPIRA: Shared Pooled Intelligence for Research and AI</span> is a community project of the <a href="https://github.com/Afflatoria" rel="noopener noreferrer">Afflatoria</a> GitHub organization. Volunteers pool spare compute from their own PCs to train one capable, fully open language model together, then help serve it. Nobody is paid. The result is meant to be open to everyone. The people who show up run the project.</p>
         <dl class="principles">
           <div>
-            <dt>Open</dt>
-            <dd>Fully open means people outside the project can hold a copy of the weights and read the method. A demo behind a login is not the goal.</dd>
+            <dt>Idle time, freely given</dt>
+            <dd>You donate spare compute from a PC you already own, for a goal you choose to support. A signup today does not start any software on that machine.</dd>
           </div>
           <div>
-            <dt>Not a company</dt>
-            <dd>Afflatoria is a community GitHub organization. There is no equity in the model and no owner who can take it private later.</dd>
+            <dt>Nobody is paid</dt>
+            <dd>Taking part is volunteer work. The reason to join is the shared model, the way people join a scientific computing project because they want the result to exist.</dd>
           </div>
           <div>
-            <dt>Democratic, in a plain sense</dt>
-            <dd>The project is community-run. People who show up to build it do that in the open, rather than inside a company that can decide alone. That is not a claim that a vote of the internet will steer every training choice. It is a refusal to leave the model in a few hands.</dd>
+            <dt>Open to everyone</dt>
+            <dd>The aim is a fully open release. Weights, method, and code that anyone can study, run, and keep.</dd>
           </div>
           <div>
-            <dt>One shared model</dt>
-            <dd>The point is a commons: one model the public can keep. Not a market of private models, and not a payout for spare cycles.</dd>
+            <dt>Run by the community</dt>
+            <dd>Afflatoria hosts the project. Design, data, and the license will be worked out in the open by the people doing the work.</dd>
           </div>
         </dl>
       </div>
     </section>
 
-    <section class="section section-night" id="differs">
-      <div class="wrap">
-        <p class="kicker">Related work</p>
-        <h2>How this differs</h2>
-        <p class="lede">Other groups have already done parts of this, and they have shipped real work. SPIRA has not. The difference is the arrangement, not a claim of better results.</p>
-        <div class="differs">
-          <article class="differ">
-            <h3>Prime Intellect</h3>
-            <p>Prime Intellect has trained models across computers on the public internet, and it has published work on low-communication training. It is a company with a platform. People contribute through that platform.</p>
-            <p>SPIRA has no company and no platform. The hope is spare capacity on PCs volunteers already own, given freely. Nothing here is running yet.</p>
-          </article>
-          <article class="differ">
-            <h3>Nous Research, Psyche</h3>
-            <p>Nous Research has run Psyche, a decentralized pretraining effort, and has published training methods that need very little bandwidth. That work comes from a research company, with its own roadmap and its own runs.</p>
-            <p>SPIRA is a volunteer community project. It does not have a training run, a client, or a lab behind it.</p>
-          </article>
-          <article class="differ">
-            <h3>Petals</h3>
-            <p>Petals lets people pool GPU memory to run and fine-tune large models that already exist. It is research software, and someone can join it today. Its main job is inference and fine-tuning.</p>
-            <p>SPIRA's first aim is to train one new open model as a community, and to help serve it after that. Petals is further along. We are naming a different aim, not competing with their result.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-paper" id="challenges">
+    <section class="section section-night" id="challenges">
       <div class="wrap narrow">
-        <p class="kicker">What is hard</p>
-        <h2>Honest technical challenges</h2>
-        <p class="lede">Training one language model on home PCs is an open research problem. Nothing below is built. These are the difficulties we already know are real, and the approaches worth trying.</p>
+        <p class="kicker">Ahead of us</p>
+        <h2>Open problems we will solve together</h2>
+        <p class="lede">Training one language model on home PCs is work the community still has to do. These are the problems in front of us, and the ways we intend to meet them. The software does not exist yet.</p>
 
         <article class="challenge">
-          <h3>Home connections are too slow</h3>
-          <p>A normal training step wants to move a huge amount of data between machines. A home upload link cannot do that. Searches that split into independent chunks do not have this problem. Training one model does.</p>
-          <p class="approach"><span class="label-mini">Approach</span> Low-bandwidth methods in the family of DiLoCo: each machine takes many steps locally, then sends a small update, not every gradient.</p>
-          <p class="still"><span class="label-mini">Still open</span> Whether those rare updates stay stable for a model large enough to be useful, on links that are slow and uneven.</p>
+          <h3>Share updates that fit a home connection</h3>
+          <p>A full training step wants to move more data than a home link can carry. The path we will try is low-bandwidth training in the family of DiLoCo: many local steps on each machine, then one small update for the group.</p>
+          <p class="still"><span class="label-mini">Open problem</span> Keeping those infrequent updates healthy for a model large enough to be worth training, on the connections people actually have.</p>
         </article>
 
         <article class="challenge">
-          <h3>Machines leave</h3>
-          <p>A home PC will sleep, reboot, or be turned off. Dropout has to be normal, not a crash.</p>
-          <p class="approach"><span class="label-mini">Approach</span> Fault tolerance. Checkpoint often, let another machine finish abandoned work, and keep the run going when nodes drop out.</p>
-          <p class="still"><span class="label-mini">Still open</span> Doing that without wasting most of the donated time.</p>
+          <h3>Welcome machines that come and go</h3>
+          <p>A home PC sleeps, reboots, and gets turned off. The project can treat that as ordinary. Frequent checkpoints, and letting another machine finish work that was left behind, keep a run going when nodes drop out.</p>
+          <p class="still"><span class="label-mini">Open problem</span> Fault tolerance that puts most of the donated time into the model.</p>
         </article>
 
         <article class="challenge">
-          <h3>The work has to be checked</h3>
-          <p>A machine can be wrong by accident, or someone can send an update meant to spoil the model. Volunteers are not a trusted cluster.</p>
-          <p class="approach"><span class="label-mini">Approach</span> Verification. Repeat some of the work, reject updates that do not fit, and keep a smaller set of machines that can audit others.</p>
-          <p class="still"><span class="label-mini">Still open</span> A check that is strong enough against a determined attacker and still cheap enough for spare hardware. This is not solved. A volunteer project should say so before it asks for trust.</p>
+          <h3>Check the work as a community</h3>
+          <p>The model should be something the people building it can verify. Repeating some of the work, and setting aside updates that do not fit, is how a volunteer project trusts what it is making.</p>
+          <p class="still"><span class="label-mini">Open problem</span> Verification that is strong, and still light enough to run on spare hardware.</p>
         </article>
 
         <article class="challenge">
-          <h3>The PCs do not match, and the data has to be legitimate</h3>
-          <p>A model people would call capable does not fit on one consumer GPU. The honest start is a small public test. Splitting a larger model across ordinary PCs is research, not a feature we can promise.</p>
-          <p class="still"><span class="label-mini">Still open</span> The training text also has to be lawfully usable, with a public recipe. That choice has not been made, and it will be made in the open.</p>
+          <h3>Fit the work to ordinary PCs</h3>
+          <p>A capable model does not sit on one consumer GPU, and the computers people offer will differ. We will start with a small public test and learn how to share a larger model across ordinary machines. The training text needs a public recipe, chosen with the community.</p>
+          <p class="still"><span class="label-mini">Open problem</span> A design, and a data recipe, that the people doing the work can read and stand behind.</p>
         </article>
       </div>
     </section>
@@ -258,7 +229,7 @@
           </li>
           <li>
             <h3>Shared inference</h3>
-            <p>Use the volunteer network to help serve the model, so using it does not require a company API.</p>
+            <p>The same volunteer network helps serve the model, so anyone can use what the community trained.</p>
           </li>
         </ol>
       </div>
@@ -278,16 +249,12 @@
             <p>No. There is no client. The form is a way to say you want to take part when there is something real to run, or that you want to help build it.</p>
           </details>
           <details>
-            <summary>Is this cryptocurrency?</summary>
-            <p>No. There is no token, no wallet, and no payout. Spare compute would be a donation.</p>
-          </details>
-          <details>
-            <summary>Who controls the project?</summary>
-            <p>It is community-run, hosted by the <a href="https://github.com/Afflatoria" rel="noopener noreferrer">Afflatoria</a> GitHub organization. It is not a company. Design, data, and the license should be argued in the open by the people doing the work.</p>
+            <summary>Who runs the project?</summary>
+            <p>The community. It is hosted by the <a href="https://github.com/Afflatoria" rel="noopener noreferrer">Afflatoria</a> GitHub organization. Design, data, and the license will be decided in the open by the people doing the work. Nobody is paid to take part.</p>
           </details>
           <details>
             <summary>Who owns the model?</summary>
-            <p>No model exists. The intention is a fully open release the public can keep, not a weight file locked to one organization. The exact license is not chosen yet.</p>
+            <p>No model exists yet. The aim is a fully open release anyone can keep. The license will be chosen in the open, with the community.</p>
           </details>
           <details>
             <summary>Will it slow down my PC?</summary>

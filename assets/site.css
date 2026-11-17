@@ -498,22 +498,6 @@ h2 {
   margin: 0.35rem 0 0;
 }
 
-.differs {
-  display: grid;
-  gap: 1.25rem;
-  margin-top: 1.75rem;
-}
-
-.differ {
-  padding-top: 1rem;
-  border-top: 2px solid var(--breath);
-}
-
-.differ h3 {
-  margin: 0;
-  font-size: 1.55rem;
-}
-
 .challenge + .challenge {
   margin-top: 1.6rem;
   padding-top: 1.6rem;
@@ -533,6 +517,10 @@ h2 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--clay-deep);
+}
+
+.section-night .label-mini {
+  color: #f0c2b0;
 }
 
 .approach,
@@ -885,11 +873,6 @@ textarea[aria-invalid="true"] {
   .steps li {
     border-top: 2px solid var(--breath);
     padding: 1rem 0 0;
-  }
-
-  .differs {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5rem;
   }
 }
 
